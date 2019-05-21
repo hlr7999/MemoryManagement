@@ -43,8 +43,8 @@ public class App extends JFrame{
 		controlView.setLayout(new GridLayout(2, 1));
 		Font font = new Font("Microsoft YaHei UI", Font.PLAIN, 20);
 		Box radioButtons = Box.createVerticalBox();
-		firstFit.addActionListener(radioButtonListener);
-		bestFit.addActionListener(radioButtonListener);
+		firstFit.addActionListener(firstFitButtonListener);
+		bestFit.addActionListener(bestFitButtonListener);
 		ButtonGroup buttonGroup = new ButtonGroup();
 		buttonGroup.add(firstFit);
 		buttonGroup.add(bestFit);
@@ -82,23 +82,22 @@ public class App extends JFrame{
 		this.add(appView);
 		setTitle("Memory Management");
     	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    	setSize(900, 600);
+    	setSize(900, 688);
     	setResizable(false);
     	setVisible(true);
 	}
 	
-	ActionListener radioButtonListener = new ActionListener() {		
+	ActionListener firstFitButtonListener = new ActionListener() {		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			JRadioButton button = (JRadioButton) e.getSource();
-			switch (button.getText().charAt(0)) {
-			case 'f':
-				memory.setFitWay(Memory.FirstFit);
-				break;
-			case 'b':
-				memory.setFitWay(Memory.BestFit);
-				break;
-			}
+			memory.setFitWay(Memory.FirstFit);
+		}
+	};
+	
+	ActionListener bestFitButtonListener = new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			memory.setFitWay(Memory.BestFit);
 		}
 	};
 	
